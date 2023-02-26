@@ -34,6 +34,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.springframework.kafka:spring-kafka-test")
+	implementation ("io.github.microutils:kotlin-logging:2.0.10")
+
 }
 
 dependencyManagement {

@@ -1,8 +1,8 @@
 spring:
   r2dbc:
-    url: r2dbc:postgresql://localhost:5450/public
-    username: postgres
-    password: password
+    url: r2dbc:postgresql://localhost:5432/movile
+    username: movile
+    password: movile
 server:
   error:
     include-message: always
