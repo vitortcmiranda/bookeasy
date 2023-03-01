@@ -1,8 +1,8 @@
 package com.example.bookeasy.business.booking
 
 import com.example.bookeasy.api.BookingRequest
-import com.example.bookeasy.business.booking.repository.BookingRepositoryReactive
 import com.example.bookeasy.business.booking.model.BookingTable
+import com.example.bookeasy.business.booking.repository.BookingRepositoryReactive
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 import java.time.Instant
