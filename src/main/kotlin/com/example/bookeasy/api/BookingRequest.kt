@@ -9,14 +9,15 @@ data class BookingRequest(
     val transportType: TransportType,
     val checkIn: Instant,
     val checkOut: Instant,
-    val contactInfo: ContactInfo
+    val contactInfo: ContactInfo,
+    val amount: Long,
 )
 
 data class ContactInfo(
     val firstName: String,
     val lastName: String,
     val email: String,
-    val phoneNumber: String
+    val phoneNumber: String,
 )
 
 enum class RoomType {
@@ -25,6 +26,4 @@ enum class RoomType {
 
 enum class TransportType {
     FLIGHT, BUS, RENT_CAR
-
 }
-

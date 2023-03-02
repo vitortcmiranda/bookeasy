@@ -21,18 +21,13 @@ class BookingServiceImpl(
 
 private fun BookingRequest.toDomain(now: Instant = Instant.now(), random: UUID = UUID.randomUUID()): BookingTable =
     BookingTable(
-//        id = random,
-        hotelId = random,
-        transport = this.transportType.toString(),
-        flightId = random,
-        roomType = this.roomType.toString(),
-        checkIn = now,
-        checkOut = now,
+        accommodationId = random,
+        transferId = random,
         firstName = this.contactInfo.firstName,
         lastName = this.contactInfo.lastName,
         email = this.contactInfo.email,
         phoneNumber = this.contactInfo.phoneNumber,
+        amount = this.amount,
         createdAt = now,
         updatedAt = now,
-
     )
