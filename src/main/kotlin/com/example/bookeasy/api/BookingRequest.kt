@@ -5,8 +5,7 @@ import java.time.Instant
 data class BookingRequest(
     val hotelId: String,
     val flightId: String?,
-    val roomType: RoomType,
-    val transportType: TransportType,
+    val transfer: TransferRequest?,
     val checkIn: Instant,
     val checkOut: Instant,
     val contactInfo: ContactInfo,
@@ -19,11 +18,3 @@ data class ContactInfo(
     val email: String,
     val phoneNumber: String,
 )
-
-enum class RoomType {
-    STANDARD, DELUXE, SUITE, EXECUTIVE, FAMILY
-}
-
-enum class TransportType {
-    FLIGHT, BUS, RENT_CAR
-}

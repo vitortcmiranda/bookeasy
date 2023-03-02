@@ -1,15 +1,16 @@
 package com.example.bookeasy.business.transfer.model
 
-data class Transfer(
+import java.util.*
 
+data class Transfer(
     val origin: String,
     val destination: String,
     val transportTicket: TransportTicket,
 )
 
 open class TransportTicket(
-    private val seat: String,
-    private val price: Long,
+    private val seat: String = "1",
+    private val price: Long = 50,
     private val type: TransportType,
 )
 

@@ -7,13 +7,13 @@ import java.util.UUID
 @Table("transfer")
 data class TransferTable(
     @Id
-    val id: UUID,
+    val id: UUID? = null,
     val bookingId: UUID,
     val origin: String,
     val destination: String,
     val seat: String,
     val price: Long,
-    val transportType: Type,
+    val transportType: TransportType,
 )
 
 enum class Type {

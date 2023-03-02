@@ -5,7 +5,6 @@ import com.example.bookeasy.business.booking.model.BookingTable
 import com.example.bookeasy.business.booking.repository.BookingRepositoryReactive
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
-import java.time.Instant
 import java.util.*
 
 @Service
@@ -19,15 +18,4 @@ class BookingServiceImpl(
     override fun findByIdCrudRepository(id: UUID): Mono<BookingTable> = bookingReactiveRepository.findById(id)
 }
 
-private fun BookingRequest.toDomain(now: Instant = Instant.now(), random: UUID = UUID.randomUUID()): BookingTable =
-    BookingTable(
-        accommodationId = random,
-        transferId = random,
-        firstName = this.contactInfo.firstName,
-        lastName = this.contactInfo.lastName,
-        email = this.contactInfo.email,
-        phoneNumber = this.contactInfo.phoneNumber,
-        amount = this.amount,
-        createdAt = now,
-        updatedAt = now,
-    )
+
