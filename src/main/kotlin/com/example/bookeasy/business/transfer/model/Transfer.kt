@@ -18,5 +18,5 @@ enum class TransportType {
     BUS, AIR_PLANE
 }
 
-class AirplaneTransportTicket(val seat: String, price: Long) : TransportTicket(seat, price, TransportType.BUS)
-class BusTransportTicket(val seat: String, price: Long) : TransportTicket(seat, price, TransportType.AIR_PLANE)
+class AirplaneTransportTicket(val seat: String, price: Long) : TransportTicket(seat, price, TransportType.AIR_PLANE)
+class BusTransportTicket(val seat: String, price: Long) : TransportTicket(seat, price, TransportType.BUS)

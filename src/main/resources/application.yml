@@ -1,8 +1,10 @@
 spring:
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/movile
-    username: movile
-    password: movile
+    url: r2dbc:postgresql://localhost:5450/bookeasy?schema=bookeasy
+    username: postgres
+    password: password
+  flyway:
+    enabled: true
 server:
   error:
     include-message: always
