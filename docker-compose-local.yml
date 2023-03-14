@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgres:
+    container_name: bookeasy_postgres
+    image: postgres
+    extra_hosts: [ 'host.docker.internal:host-gateway' ]
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./config/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./local-data:/var/lib/postgresql/data
+    ports:
+      - 5450:5432
