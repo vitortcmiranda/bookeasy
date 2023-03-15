@@ -6,7 +6,7 @@ services:
     extra_hosts: [ 'host.docker.internal:host-gateway' ]
     restart: always
     environment:
-      POSTGRES_DB: postgres
+      POSTGRES_DB: bookeasy
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     volumes:
