@@ -1,20 +1,20 @@
 package com.example.bookeasy.business.booking
 
 import com.example.bookeasy.api.*
-import com.example.bookeasy.business.booking.model.BookingTable
+import com.example.bookeasy.business.booking.model.Booking
 import com.example.bookeasy.business.transfer.model.TransferTable
 import java.time.Instant
 import java.util.*
 
-fun BookingTable.toBookingSessionResponse() = BookingResponse(
+fun Booking.toBookingSessionResponse() = BookingResponse(
     bookingId = this.id!!,
     accommodation = this.accommodationId,
     transfer = this.transferId,
     contactInfo = ContactInfo(firstName, lastName, email, phoneNumber),
 )
 
-fun BookingRequest.toDomain(now: Instant = Instant.now(), random: UUID = UUID.randomUUID()): BookingTable =
-    BookingTable(
+fun BookingRequest.toDomain(now: Instant = Instant.now(), random: UUID = UUID.randomUUID()): Booking =
+    Booking(
         accommodationId = random,
         transferId = random,
         firstName = this.contactInfo.firstName,

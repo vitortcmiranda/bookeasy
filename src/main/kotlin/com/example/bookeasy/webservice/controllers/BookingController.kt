@@ -19,11 +19,11 @@ import java.util.*
 class BookingController(
     private val bookingService: BookingService,
 ) {
-    @PostMapping("")
-    fun saveBooking(@RequestBody bookingRequest: BookingRequest):
-            Mono<BookingResponse> =
-        bookingService.saveWithCrudRepository(bookingRequest)
-            .flatMap { it.toBookingSessionResponse().toMono() }
+//    @PostMapping("")
+//    fun saveBooking(@RequestBody bookingRequest: BookingRequest):
+//            Mono<BookingResponse> =
+//        bookingService.saveWithCrudRepository(bookingRequest)
+//            .flatMap { it.toBookingSessionResponse().toMono() }
 
     @GetMapping("/id/{id}")
     fun getById(@PathVariable id: UUID): Mono<BookingResponse> =

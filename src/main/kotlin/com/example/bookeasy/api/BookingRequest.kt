@@ -1,5 +1,6 @@
 package com.example.bookeasy.api
 
+import java.math.BigDecimal
 import java.time.Instant
 
 data class BookingRequest(
@@ -9,7 +10,7 @@ data class BookingRequest(
     val checkIn: Instant,
     val checkOut: Instant,
     val contactInfo: ContactInfo,
-    val amount: Long,
+    val amount: BigDecimal,
 )
 
 data class ContactInfo(
