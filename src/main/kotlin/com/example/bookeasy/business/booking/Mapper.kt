@@ -15,6 +15,7 @@ fun Booking.toBookingSessionResponse() = BookingResponse(
 
 fun BookingRequest.toDomain(now: Instant = Instant.now(), random: UUID = UUID.randomUUID()): Booking =
     Booking(
+        id = UUID.randomUUID(),
         accommodationId = random,
         transferId = random,
         firstName = this.contactInfo.firstName,
@@ -49,4 +50,4 @@ fun TransferTable.toTransferResponse(): TransferResponse = TransferResponse(
     transportType = this.transportType.toString(),
     price = this.price,
 
-)
+    )

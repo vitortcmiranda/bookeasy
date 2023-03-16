@@ -6,4 +6,6 @@ import java.util.*
 
 interface BookingRepository {
     fun findById(id: UUID): Mono<Booking>
+
+    fun save(booking: Booking): Mono<Booking>
 }
