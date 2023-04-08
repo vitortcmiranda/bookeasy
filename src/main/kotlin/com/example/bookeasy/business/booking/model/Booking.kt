@@ -8,8 +8,8 @@ import java.util.*
 
 data class Booking(
     val id: UUID? = null,
-    val accommodationId: UUID,
-    val transferId: UUID? = null,
+    //val accommodationId: UUID,
+    //val transferId: UUID? = null,
     val amount: BigDecimal,
     val firstName: String,
     val lastName: String,

@@ -8,5 +8,5 @@ import java.util.UUID
 interface BookingService {
     fun findByIdCrudRepository(id: UUID): Mono<Booking>
 
-    fun saveWithCrudRepository(booking: BookingRequest): Mono<Booking>
+    fun save(booking: BookingRequest): Mono<Booking>
 }

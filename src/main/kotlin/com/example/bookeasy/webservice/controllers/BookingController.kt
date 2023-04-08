@@ -16,7 +16,7 @@ class BookingController(
     @PostMapping("")
     fun saveBooking(@RequestBody bookingRequest: BookingRequest):
             Mono<BookingResponse> =
-        bookingService.saveWithCrudRepository(bookingRequest)
+        bookingService.save(bookingRequest)
             .flatMap { it.toBookingSessionResponse().toMono() }
 
     @GetMapping("/id/{id}")

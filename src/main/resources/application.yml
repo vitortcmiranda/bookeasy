@@ -8,3 +8,7 @@ spring:
 server:
   error:
     include-message: always
+logging:
+  level:
+    root: info
+    org.springframework.web.reactive: debug

@@ -5,8 +5,8 @@ import java.util.UUID
 
 data class BookingResponse(
     val bookingId: UUID,
-    val transfer: UUID?,
-    val accommodation: UUID,
+    //val transfer: UUID?,
+    //val accommodation: UUID,
     val contactInfo: ContactInfo,
 )
 
