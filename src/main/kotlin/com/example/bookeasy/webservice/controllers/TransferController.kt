@@ -1,6 +1,7 @@
 package com.example.bookeasy.webservice.controllers
 
 import com.example.bookeasy.api.*
+import com.example.bookeasy.business.booking.toDomain
 import com.example.bookeasy.business.booking.toTransferResponse
 import com.example.bookeasy.business.transfer.TransferService
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,16 +17,16 @@ import java.util.*
 @RestController
 @RequestMapping("/api/booking/transfer")
 class TransferController(
-    private val transferService: TransferService,
+        private val transferService: TransferService,
 ) {
     @PostMapping("")
     fun saveBooking(@RequestBody transferRequest: TransferRequest):
             Mono<TransferResponse> =
-        transferService.saveWithCrudRepository(transferRequest)
-            .flatMap { it.toTransferResponse().toMono() }
+            transferService.save(transferRequest.toDomain())
+                    .flatMap { it.toTransferResponse().toMono() }
 
     @GetMapping("/id/{id}")
     fun getById(@PathVariable id: UUID): Mono<TransferResponse> =
-        transferService.findByIdCrudRepository(id)
-            .flatMap { it.toTransferResponse().toMono() }
+            transferService.findById(id)
+                    .flatMap { it.toTransferResponse().toMono() }
 }
