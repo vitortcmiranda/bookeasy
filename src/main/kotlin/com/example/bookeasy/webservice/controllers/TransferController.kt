@@ -19,14 +19,14 @@ import java.util.*
 class TransferController(
         private val transferService: TransferService,
 ) {
-    @PostMapping("")
-    fun saveBooking(@RequestBody transferRequest: TransferRequest):
-            Mono<TransferResponse> =
-            transferService.save(transferRequest.toDomain())
-                    .flatMap { it.toTransferResponse().toMono() }
-
-    @GetMapping("/id/{id}")
-    fun getById(@PathVariable id: UUID): Mono<TransferResponse> =
-            transferService.findById(id)
-                    .flatMap { it.toTransferResponse().toMono() }
+//    @PostMapping("")
+//    fun saveBooking(@RequestBody transferRequest: TransferRequest):
+//            Mono<TransferResponse> =
+//            transferService.save(transferRequest.toDomain())
+//                    .flatMap { it.toTransferResponse().toMono() }
+//
+//    @GetMapping("/id/{id}")
+//    fun getById(@PathVariable id: UUID): Mono<TransferResponse> =
+//            transferService.findById(id)
+//                    .flatMap { it.toTransferResponse().toMono() }
 }

@@ -17,10 +17,10 @@ class BookingController(
     fun saveBooking(@RequestBody bookingRequest: BookingRequest):
             Mono<BookingResponse> =
         bookingService.save(bookingRequest)
-            .flatMap { it.toBookingSessionResponse().toMono() }
+//            .flatMap { it.toBookingSessionResponse().toMono() }
 
-    @GetMapping("/id/{id}")
-    fun getById(@PathVariable id: UUID): Mono<BookingResponse> =
-        bookingService.findByIdCrudRepository(id)
-            .flatMap { it.toBookingSessionResponse().toMono() }
+//    @GetMapping("/id/{id}")
+//    fun getById(@PathVariable id: UUID): Mono<BookingResponse> =
+//        bookingService.findByIdCrudRepository(id)
+//            .flatMap { it.toBookingSessionResponse().toMono() }
 }

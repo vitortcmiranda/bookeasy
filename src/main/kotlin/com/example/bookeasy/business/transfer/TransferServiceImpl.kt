@@ -10,10 +10,10 @@ import java.util.*
 
 @Service
 class TransferServiceImpl(
-    private val transferRepository: TransferRepository,
+        private val transferRepository: TransferRepository,
 ) : TransferService {
     override fun findById(id: UUID): Mono<Transfer> = transferRepository.findById(id)
 
     override fun save(transfer: Transfer): Mono<Transfer> =
-        transferRepository.save(transfer)
+            transferRepository.save(transfer)
 }

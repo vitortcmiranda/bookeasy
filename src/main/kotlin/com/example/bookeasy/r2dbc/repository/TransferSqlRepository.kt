@@ -19,7 +19,7 @@ class TransferSqlRepository(private val databaseClient: DatabaseClient) : Transf
             SELECT * FROM transfer where id = :id
         """
         const val INSERT = """
-            INSERT INTO bookeasy.transfer
+            INSERT INTO transfer
             (id, origin, destination, seat, price, ticket_type, booking_id) VALUES(:id, :origin, :destination, :seat, 
             :price, :ticket_type, :booking_id)
             RETURNING *
