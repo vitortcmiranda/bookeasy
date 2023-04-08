@@ -27,15 +27,6 @@ class BookingServiceImpl(
         private val log = KotlinLogging.logger {}
     }
 
-    //    override fun save(booking: BookingRequest): Mono<BookingResponse> =
-//            bookingRepository.save(booking.toDomain())
-//                    .flatMap { savedBooking ->
-//                        transferService.save(booking.transfer!!.toDomain())
-//                                .thenReturn(savedBooking.toBookingSessionResponse())
-//                    }
-//                    .doOnError { error ->
-//                        log.error("An error occurred while saving the booking", error)
-//                    }
     override fun save(booking: BookingRequest): Mono<BookingResponse> =
             bookingRepository.save(booking.toDomain()).flatMap { createdBooking ->
                 accommodationService.save(booking.accommodation.toDomain(createdBooking.id!!))
