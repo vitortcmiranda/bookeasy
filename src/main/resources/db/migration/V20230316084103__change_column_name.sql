@@ -1,1 +1,1 @@
-ALTER TABLE bookeasy.transfer RENAME COLUMN "type" TO ticket_type;
+ALTER TABLE transfer RENAME COLUMN "type" TO ticket_type;

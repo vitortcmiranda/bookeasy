@@ -4,7 +4,6 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE booking
 (
     id               uuid         NOT NULL DEFAULT uuid_generate_v4(),
-    accommodation_id uuid NULL,
     transfer_id      uuid NULL,
     first_name       varchar(255) NOT NULL,
     last_name        varchar(255) NOT NULL,

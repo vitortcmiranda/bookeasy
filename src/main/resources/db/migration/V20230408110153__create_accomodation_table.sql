@@ -1,4 +1,4 @@
-CREATE TABLE accomodation
+CREATE TABLE accommodation
 (
     booking_id  uuid NULL,
     id          uuid NULL,
@@ -7,6 +7,6 @@ CREATE TABLE accomodation
     price       numeric(10, 2) NULL,
     created_at  timestamp NOT NULL DEFAULT now(),
     updated_at  timestamp NOT NULL DEFAULT now(),
-    CONSTRAINT accomodation_pk PRIMARY KEY (id),
-    CONSTRAINT accomodation_fk FOREIGN KEY (booking_id) REFERENCES booking (id)
+    CONSTRAINT accommodation_pk PRIMARY KEY (id),
+    CONSTRAINT accommodation_fk FOREIGN KEY (booking_id) REFERENCES booking (id)
 );
