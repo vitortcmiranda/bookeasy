@@ -18,36 +18,56 @@ import java.util.*
 
 @Service
 class BookingServiceImpl(
-        private val bookingRepository: BookingRepository,
-        private val transferService: TransferService,
-        private val accommodationService: AccommodationService
+    private val bookingRepository: BookingRepository,
+    private val transferService: TransferService,
+    private val accommodationService: AccommodationService
 ) : BookingService {
 
     companion object {
         private val log = KotlinLogging.logger {}
     }
 
-    override fun save(booking: BookingRequest): Mono<BookingResponse> =
-            bookingRepository.save(booking.toDomain()).flatMap { createdBooking ->
-                accommodationService.save(booking.accommodation.toDomain(createdBooking.id!!))
-                        .flatMap { accommodationSaved ->
-                            transferService.save(booking.transfer!!.toDomain
-                            (createdBooking.id)).map {
-                                BookingResponse(bookingId = createdBooking.id, transfer = it
-                                        .toTransferResponse(), contactInfo = ContactInfo(firstName = createdBooking
-                                        .firstName, lastName = createdBooking.lastName, email = createdBooking
-                                        .email, phoneNumber = createdBooking.phoneNumber),
-                                        accommodation = accommodationSaved.toAccommodationResponse()
-                                )
-                            }
-                        }
+    override fun save(booking: BookingRequest): Mono<BookingResponse> = //TODO separate concerns
+        bookingRepository.save(booking.toDomain()).doOnSuccess {
+            log.info {
+                "Successfully created booking, " +
+                        "saving accommodation now for ${booking.contactInfo.phoneNumber}"
             }
+        }.flatMap { createdBooking ->
+            accommodationService.save(booking.accommodation.toDomain(createdBooking.id!!)).doOnSuccess {
+                log.info {
+                    "Successfully saved accommodation, saving transfer now for ${booking.contactInfo.phoneNumber}"
+                }
+            }
+                .flatMap { accommodationSaved ->
+                    transferService.save(
+                        booking.transfer!!.toDomain
+                            (createdBooking.id)
+                    ).doOnSuccess {
+                        log.info {
+                            "Successfully saved transfer for ${booking.contactInfo.phoneNumber}"
+                        }
+                    }.map {
+                        BookingResponse(
+                            bookingId = createdBooking.id, transfer = it
+                                .toTransferResponse(), contactInfo = ContactInfo(
+                                firstName = createdBooking
+                                    .firstName, lastName = createdBooking.lastName, email = createdBooking
+                                    .email, phoneNumber = createdBooking.phoneNumber
+                            ),
+                            accommodation = accommodationSaved.toAccommodationResponse()
+                        )
+                    }
+                }
+        }
 
     override fun findByIdCrudRepository(id: UUID): Mono<Booking> = bookingRepository.findById(id)
 }
 
-private fun AccommodationRequest.toDomain(bookingId: UUID) = Accommodation(bookingId = bookingId,
-        id = UUID.randomUUID(), description = this.description, location = this.location, price = this.price, createdAt
-= Instant.now(), updatedAt = Instant.now())
+private fun AccommodationRequest.toDomain(bookingId: UUID) = Accommodation(
+    bookingId = bookingId,
+    id = UUID.randomUUID(), description = this.description, location = this.location, price = this.price, createdAt
+    = Instant.now(), updatedAt = Instant.now()
+)
 
 
