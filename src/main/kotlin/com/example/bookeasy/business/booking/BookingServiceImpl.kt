@@ -64,10 +64,5 @@ class BookingServiceImpl(
     override fun findByIdCrudRepository(id: UUID): Mono<Booking> = bookingRepository.findById(id)
 }
 
-private fun AccommodationRequest.toDomain(bookingId: UUID) = Accommodation(
-    bookingId = bookingId,
-    id = UUID.randomUUID(), description = this.description, location = this.location, price = this.price, createdAt
-    = Instant.now(), updatedAt = Instant.now()
-)
 
 

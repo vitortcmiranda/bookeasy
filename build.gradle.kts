@@ -38,6 +38,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging:2.0.10")
     implementation("org.postgresql:postgresql:42.3.1")
     testImplementation("org.flywaydb:flyway-core:7.15.0")
+    testImplementation("io.mockk:mockk:1.12.4")
 
 }
 
