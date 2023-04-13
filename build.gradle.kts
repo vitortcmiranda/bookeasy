@@ -39,6 +39,7 @@ dependencies {
     implementation("org.postgresql:postgresql:42.3.1")
     testImplementation("org.flywaydb:flyway-core:7.15.0")
     testImplementation("io.mockk:mockk:1.12.4")
+    testImplementation("com.ninja-squad:springmockk:3.0.1")
 
 }
 
